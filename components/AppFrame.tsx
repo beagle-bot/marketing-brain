@@ -22,10 +22,10 @@ export function AppFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-20 border-b border-line bg-paper/95 backdrop-blur">
-        <div className="mx-auto flex max-w-screen-sm items-center justify-between px-5 py-4">
-          <Link href="/" className="flex items-baseline gap-2">
-            <span className="font-serif text-xl font-semibold tracking-tight text-ink">marketing brain</span>
-            <span className="text-[11px] text-faint">v1.0</span>
+        <div className="mx-auto flex max-w-screen-sm items-center justify-between gap-2 px-5 py-4">
+          <Link href="/" className="flex shrink-0 items-baseline gap-2">
+            <span className="whitespace-nowrap font-serif text-lg font-semibold tracking-tight text-ink sm:text-xl">marketing brain</span>
+            <span className="hidden text-[11px] text-faint sm:inline">v1.0</span>
           </Link>
           <div className="flex items-center">
             <nav className="flex items-center">
@@ -35,7 +35,7 @@ export function AppFrame({ children }: { children: React.ReactNode }) {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`rounded-card px-3 py-1.5 text-sm transition-colors ${
+                    className={`whitespace-nowrap rounded-card px-2 py-1.5 text-sm transition-colors sm:px-3 ${
                       active ? "font-semibold text-ink underline decoration-line decoration-2 underline-offset-8" : "text-muted hover:text-ink"
                     }`}
                   >
