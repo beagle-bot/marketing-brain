@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RotateCcw } from "lucide-react";
+import { useBrain } from "@/components/BrainProvider";
 
 const navLinks = [
   { href: "/", label: "Feed" },
@@ -11,6 +13,11 @@ const navLinks = [
 
 export function AppFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { reset } = useBrain();
+
+  function confirmReset() {
+    if (window.confirm("重置会清空这台设备上的营销收藏和备注，确定继续吗？")) reset();
+  }
 
   return (
     <div className="min-h-screen">
@@ -20,22 +27,27 @@ export function AppFrame({ children }: { children: React.ReactNode }) {
             <span className="font-serif text-xl font-semibold tracking-tight text-ink">marketing brain</span>
             <span className="text-[11px] text-faint">v1.0</span>
           </Link>
-          <nav className="flex items-center">
-            {navLinks.map((link) => {
-              const active = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded-card px-3 py-1.5 text-sm transition-colors ${
-                    active ? "font-semibold text-ink underline decoration-line decoration-2 underline-offset-8" : "text-muted hover:text-ink"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+          <div className="flex items-center">
+            <nav className="flex items-center">
+              {navLinks.map((link) => {
+                const active = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`rounded-card px-3 py-1.5 text-sm transition-colors ${
+                      active ? "font-semibold text-ink underline decoration-line decoration-2 underline-offset-8" : "text-muted hover:text-ink"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            <button type="button" onClick={confirmReset} className="ml-1 inline-flex h-8 w-8 items-center justify-center text-faint hover:text-ink" aria-label="重置本地数据">
+              <RotateCcw className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-screen-sm px-5 pb-24 pt-6">{children}</main>
