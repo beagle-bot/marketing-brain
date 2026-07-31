@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>数英网 DIGITALING</title>
+    <item>
+      <title><![CDATA[ 文章频道 - 一次夏日茶饮联名复盘 ]]></title>
+      <link><![CDATA[ https://www.digitaling.com/articles/1001.html ]]></link>
+      <description><![CDATA[ <div class="article_con"><div class="descrip">从用户洞察到社媒扩散的完整案例。</div><p>正文内容。</p></div> ]]></description>
+      <pubDate><![CDATA[ Fri, 31 Jul 2026 09:00:00 +0800 ]]></pubDate>
+      <author><![CDATA[ 数英编辑部 ]]></author>
+    </item>
+    <item>
+      <title><![CDATA[ 项目频道 - 汽车品牌社媒 Campaign ]]></title>
+      <link><![CDATA[ https://www.digitaling.com/projects/1002.html ]]></link>
+      <description><![CDATA[ <p>用线下事件带动社交媒体讨论。</p> ]]></description>
+      <pubDate><![CDATA[ Thu, 30 Jul 2026 14:00:00 +0800 ]]></pubDate>
+      <author><![CDATA[ 创意代理商 ]]></author>
+    </item>
+    <item>
+      <title><![CDATA[ 招聘频道 - 创意总监 ]]></title>
+      <link><![CDATA[ https://www.digitaling.com/jobs/1003.html ]]></link>
+      <description><![CDATA[ <p>职位描述与简历发送方式。</p> ]]></description>
+      <pubDate><![CDATA[ Thu, 30 Jul 2026 10:00:00 +0800 ]]></pubDate>
+      <author><![CDATA[ 招聘公司 ]]></author>
+    </item>
+  </channel>
+</rss>
