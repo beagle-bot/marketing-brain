@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="brain app icon">
+  <rect width="512" height="512" rx="96" fill="#15181d"/>
+  <path d="M134 258c0-74 54-132 128-132 70 0 116 49 116 112 0 80-68 145-150 145-56 0-94-32-94-79 0-45 34-78 82-78 41 0 69 25 69 61 0 29-21 51-51 51-22 0-38-14-38-34 0-17 12-30 29-30" fill="none" stroke="#0f9f8f" stroke-width="34" stroke-linecap="round"/>
+  <path d="M292 151c48 26 81 76 81 135 0 54-28 97-74 121" fill="none" stroke="#e85d3f" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="168" cy="164" r="20" fill="#d99014"/>
+</svg>
