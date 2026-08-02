@@ -62,7 +62,7 @@ export function SaveSheet({ item, initialIndustry, initialRating = 3, initialNot
           </div>
         </div>
         <label className="mt-4 block"><span className="text-sm font-semibold text-ink">我的备注</span><textarea value={note} onChange={(event) => setNote(event.target.value)} placeholder="它能用在什么地方？" className="mt-2 min-h-24 w-full resize-none rounded-card border border-line bg-card px-3 py-2.5 text-sm leading-6 outline-none focus:border-ink" /></label>
-        <button type="button" onClick={confirm} aria-disabled={!industry} className={`mt-5 inline-flex h-11 w-full items-center justify-center rounded-card text-sm font-semibold ${industry ? "bg-ink text-paper" : "bg-line text-muted"}`}>确认收藏</button>
+        <button type="button" onClick={confirm} className={`mt-5 inline-flex h-11 w-full items-center justify-center rounded-card text-sm font-semibold ${industry ? "bg-ink text-paper" : "bg-line text-muted"}`}>确认收藏</button>
       </section>
     </div>
   );
