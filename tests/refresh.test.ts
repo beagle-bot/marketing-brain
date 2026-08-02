@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { fallbackBatch } from "@/lib/feed/fallback";
 import { refreshDailyFeed, type FeedRepository, type RefreshDependencies } from "@/lib/feed/refresh";
-import type { FeedBatch, MarketingItem, SourceName, SourceResult } from "@/lib/feed/types";
+import { isIndustry, type FeedBatch, type MarketingItem, type SourceName, type SourceResult } from "@/lib/feed/types";
 
 function item(source: SourceName, index: number): MarketingItem {
   return {
@@ -101,4 +101,6 @@ test("本地示例批次保持 12/10/8 配额", () => {
   expect(batch.items).toHaveLength(30);
   expect(batch.sourceCounts).toEqual({ SocialBeta: 12, Meihua: 10, Digitaling: 8 });
   expect(batch.items.every((entry) => entry.contentTags.includes("示例"))).toBe(true);
+  expect(batch.items.every((entry) => isIndustry(entry.industry))).toBe(true);
+  expect(batch.items.some((entry) => entry.industry === "美妆")).toBe(true);
 });
