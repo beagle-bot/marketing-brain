@@ -45,7 +45,7 @@ describe("parseMeihuaShots", () => {
       nativeCategory: "网站与软件",
       sourceUrl: "https://www.meihua.info/shots/6901056276448256"
     });
-    expect(items[2].industry).toBe("硬件");
+    expect(items[2].industry).toBe("智能硬件");
   });
 
   test("结构缺失时显式报错", () => {

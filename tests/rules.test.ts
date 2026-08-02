@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { classifyIndustry, isNoise, scoreItem } from "@/lib/feed/rules";
-import type { MarketingItem } from "@/lib/feed/types";
+import { INDUSTRIES, isIndustry, type MarketingItem } from "@/lib/feed/types";
 
 function item(overrides: Partial<MarketingItem> = {}): MarketingItem {
   return {
@@ -21,12 +21,26 @@ function item(overrides: Partial<MarketingItem> = {}): MarketingItem {
 }
 
 describe("classifyIndustry", () => {
+  test("统一提供九个可用行业", () => {
+    expect(INDUSTRIES).toEqual(["快时尚", "美妆", "汽车", "医药", "智能硬件", "金融", "互联网", "茶饮", "其他"]);
+    expect(INDUSTRIES.every(isIndustry)).toBe(true);
+    expect(isIndustry("硬件")).toBe(false);
+  });
+
   test("使用梅花网原生分类判定医药", () => {
     expect(classifyIndustry(item({ nativeCategory: "药品诊疗" }))).toBe("医药");
   });
 
   test("原生分类缺失时用茶饮关键词补充", () => {
     expect(classifyIndustry(item({ title: "瑞幸联名上新夏日果茶" }))).toBe("茶饮");
+  });
+
+  test("用品牌和品类关键词判定美妆", () => {
+    expect(classifyIndustry(item({ title: "珀莱雅发布夏日口红社媒 campaign" }))).toBe("美妆");
+  });
+
+  test("把手机与数码产品统一判定为智能硬件", () => {
+    expect(classifyIndustry(item({ title: "新一代 AI 手机发布案例" }))).toBe("智能硬件");
   });
 
   test("无法判定时返回其他", () => {

@@ -1,6 +1,12 @@
 export type SourceName = "SocialBeta" | "Meihua" | "Digitaling";
 
-export type Industry = "互联网" | "硬件" | "医药" | "汽车" | "金融" | "快时尚" | "茶饮" | "其他";
+export const INDUSTRIES = ["快时尚", "美妆", "汽车", "医药", "智能硬件", "金融", "互联网", "茶饮", "其他"] as const;
+
+export type Industry = (typeof INDUSTRIES)[number];
+
+export function isIndustry(value: unknown): value is Industry {
+  return typeof value === "string" && (INDUSTRIES as readonly string[]).includes(value);
+}
 
 export type MarketingItem = {
   id: string;
