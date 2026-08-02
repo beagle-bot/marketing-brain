@@ -40,7 +40,7 @@ export default function SavedPage() {
           );
         })}
       </div>
-      <SaveSheet item={editing?.itemSnapshot} initialRating={editing?.rating} initialNote={editing?.note} onClose={() => setEditingId(undefined)} onConfirm={(rating, note) => { if (editing) remember(editing.itemSnapshot, rating, note); setEditingId(undefined); }} />
+      <SaveSheet item={editing?.itemSnapshot} initialIndustry={editing?.savedIndustry} initialRating={editing?.rating} initialNote={editing?.note} onClose={() => setEditingId(undefined)} onConfirm={(industry, rating, note) => { if (editing) remember(editing.itemSnapshot, industry, rating, note); setEditingId(undefined); }} />
     </>
   );
 }

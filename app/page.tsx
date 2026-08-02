@@ -23,7 +23,7 @@ export default function FeedPage() {
         {feedItems.map((item) => <ItemCard key={item.id} item={item} onSave={() => setPendingId(item.id)} onSkip={() => skip(item.id)} />)}
         <p className="pt-2 text-center text-xs text-faint">右滑收藏 · 左滑略过</p>
       </div>
-      <SaveSheet item={pending} onClose={() => setPendingId(undefined)} onConfirm={(rating, note) => { if (pending) remember(pending, rating, note); setPendingId(undefined); }} />
+      <SaveSheet item={pending} onClose={() => setPendingId(undefined)} onConfirm={(industry, rating, note) => { if (pending) remember(pending, industry, rating, note); setPendingId(undefined); }} />
     </>
   );
 }

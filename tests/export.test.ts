@@ -5,6 +5,7 @@ import type { SavedItem } from "@/lib/client/types";
 test("导出包含用户备注、摘要和原文链接", () => {
   const saved: SavedItem = {
     itemId: "one",
+    savedIndustry: "茶饮",
     rating: 4,
     note: "可用在茶饮新品策划",
     savedAt: "2026-07-31T00:00:00.000Z",
