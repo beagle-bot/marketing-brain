@@ -6,7 +6,8 @@ export function buildSavedMarkdown(items: SavedItem[], dateLabel = new Date().to
     const item = saved.itemSnapshot;
     return [
       `## ${index + 1}. ${item.title}`,
-      `- 来源：${item.source} · ${item.industry}`,
+      `- 行业：${saved.savedIndustry}`,
+      `- 来源：${item.source}`,
       `- 有用性：${"★".repeat(saved.rating)}${"☆".repeat(5 - saved.rating)}`,
       saved.note ? `- 我的备注：${saved.note}` : "",
       item.summary ? `- 摘要：${item.summary}` : "",

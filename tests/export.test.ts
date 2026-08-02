@@ -5,7 +5,7 @@ import type { SavedItem } from "@/lib/client/types";
 test("导出包含用户备注、摘要和原文链接", () => {
   const saved: SavedItem = {
     itemId: "one",
-    savedIndustry: "茶饮",
+    savedIndustry: "美妆",
     rating: 4,
     note: "可用在茶饮新品策划",
     savedAt: "2026-07-31T00:00:00.000Z",
@@ -25,6 +25,8 @@ test("导出包含用户备注、摘要和原文链接", () => {
   const markdown = buildSavedMarkdown([saved], "2026-07-31");
   expect(markdown).toContain("# 我的营销素材包（2026-07-31 · 1 条）");
   expect(markdown).toContain("可用在茶饮新品策划");
+  expect(markdown).toContain("- 行业：美妆");
+  expect(markdown).not.toContain("- 行业：茶饮");
   expect(markdown).toContain("记录品牌从洞察到传播");
   expect(markdown).toContain("https://socialbeta.com/campaign/1");
 });
