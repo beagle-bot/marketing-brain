@@ -5,6 +5,7 @@ export type Rating = 1 | 2 | 3 | 4 | 5;
 export type SavedItem = {
   itemId: string;
   itemSnapshot: MarketingItem;
+  savedIndustry: Industry;
   rating: Rating;
   note: string;
   savedAt: string;

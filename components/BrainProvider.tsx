@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { FEED_CACHE_KEY, createInitialState, loadClientState, rememberItem as rememberState, removeSavedItem as removeState, saveClientState, skipItem as skipState } from "@/lib/client/storage";
 import type { ClientState, MarketingProfile, Rating } from "@/lib/client/types";
-import type { FeedBatch, MarketingItem } from "@/lib/feed/types";
+import type { FeedBatch, Industry, MarketingItem } from "@/lib/feed/types";
 
 type FeedMode = "loading" | "live" | "cached" | "fallback";
 
@@ -13,7 +13,7 @@ type BrainContextValue = {
   feedItems: MarketingItem[];
   feedMode: FeedMode;
   hydrated: boolean;
-  remember: (item: MarketingItem, rating: Rating, note: string) => void;
+  remember: (item: MarketingItem, industry: Industry, rating: Rating, note: string) => void;
   skip: (itemId: string) => void;
   removeSaved: (itemId: string) => void;
   saveProfile: (profile: MarketingProfile) => void;
@@ -66,7 +66,7 @@ export function BrainProvider({ children }: { children: React.ReactNode }) {
     saveClientState(next);
   }, []);
 
-  const remember = useCallback((item: MarketingItem, rating: Rating, note: string) => commit(rememberState(state, item, rating, note)), [commit, state]);
+  const remember = useCallback((item: MarketingItem, industry: Industry, rating: Rating, note: string) => commit(rememberState(state, item, industry, rating, note)), [commit, state]);
   const skip = useCallback((itemId: string) => commit(skipState(state, itemId)), [commit, state]);
   const removeSaved = useCallback((itemId: string) => commit(removeState(state, itemId)), [commit, state]);
   const saveProfile = useCallback((profile: MarketingProfile) => commit({ ...state, profile }), [commit, state]);
