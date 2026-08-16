@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { combineFeedBatches, readAllPages } from "@/lib/feed/archive";
 import type { FeedRepository } from "@/lib/feed/refresh";
 import type { FeedBatch, MarketingItem, SourceCounts, SourceName } from "@/lib/feed/types";
 
@@ -79,6 +80,21 @@ export class SupabaseFeedRepository implements FeedRepository {
       .maybeSingle();
     if (error) throw new Error(`Supabase 读取批次失败: ${error.message}`);
     return data ? batchFromRow(data as BatchRow) : null;
+  }
+
+  async getArchiveBatch() {
+    const rows = await readAllPages<BatchRow>(async (from, to) => {
+      const { data, error } = await this.client
+        .from("marketing_feed_batches")
+        .select("*, marketing_feed_items(*)")
+        .eq("status", "success")
+        .order("batch_date", { ascending: false })
+        .order("position", { referencedTable: "marketing_feed_items", ascending: true })
+        .range(from, to);
+      if (error) throw new Error(`Supabase 读取历史批次失败: ${error.message}`);
+      return (data ?? []) as BatchRow[];
+    });
+    return combineFeedBatches(rows.map(batchFromRow));
   }
 
   async getRecentItemIds() {
